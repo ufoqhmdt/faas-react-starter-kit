@@ -22,6 +22,8 @@ const serverPath = path.join(
   serverConfig.output.filename.replace('[name]', 'server'),
 );
 
+console.log(serverPath,'------')
+
 // Launch or restart the Node.js server
 function runServer() {
   return new Promise(resolve => {

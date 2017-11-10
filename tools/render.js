@@ -51,6 +51,8 @@ async function render() {
         'build/public',
         route.endsWith('/') ? route : path.dirname(route),
       );
+
+      console.log(dirName)
       const dist = path.join(dirName, fileName);
       const timeStart = new Date();
       const response = await fetch(url);

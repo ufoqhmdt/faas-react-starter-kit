@@ -1,21 +1,13 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 export function format(time) {
   return time.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');
 }
 
 function run(fn, options) {
+  console.log('UFO::::',options);
   const task = typeof fn.default === 'undefined' ? fn : fn.default;
   const start = new Date();
   console.info(
-    `[${format(start)}] Starting '${task.name}${options
+    `[${format(start)}] 启动任务 '${task.name}${options
       ? ` (${options})`
       : ''}'...`,
   );
@@ -23,7 +15,7 @@ function run(fn, options) {
     const end = new Date();
     const time = end.getTime() - start.getTime();
     console.info(
-      `[${format(end)}] Finished '${task.name}${options
+      `[${format(end)}] 完成任务 '${task.name}${options
         ? ` (${options})`
         : ''}' after ${time} ms`,
     );
@@ -31,6 +23,9 @@ function run(fn, options) {
   });
 }
 
+console.log('UFO::::',require.main);
+// console.log('UFO::::',require.cache);
+console.log('UFO::::',__filename,process.argv);
 if (require.main === module && process.argv.length > 2) {
   // eslint-disable-next-line no-underscore-dangle
   delete require.cache[__filename];

@@ -7,14 +7,16 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import { GraphQLList as List } from 'graphql';
+import {
+  GraphQLList as List
+} from 'graphql';
 import fetch from 'node-fetch';
 import NewsItemType from '../types/NewsItemType';
 
 // React.js News Feed (RSS)
 const url =
-  'https://api.rss2json.com/v1/api.json' +
-  '?rss_url=https%3A%2F%2Freactjsnews.com%2Ffeed.xml';
+  'https://newsapi.org/v1/articles' +
+  '?source=the-next-web&sortBy=latest&apiKey=54728d7971244024b7c707ab4b998bc7';
 
 let items = [];
 let lastFetchTask;
@@ -27,13 +29,14 @@ const news = {
       return lastFetchTask;
     }
 
-    if (new Date() - lastFetchTime > 1000 * 60 * 10 /* 10 mins */) {
+    if (new Date() - lastFetchTime > 1000 * 60 * 10 /* 10 mins */ ) {
       lastFetchTime = new Date();
       lastFetchTask = fetch(url)
         .then(response => response.json())
         .then(data => {
+          console.log(data);
           if (data.status === 'ok') {
-            items = data.items;
+            items = data.articles;
           }
 
           lastFetchTask = null;
