@@ -7,9 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import {
-  GraphQLList as List
-} from 'graphql';
+import { GraphQLList as List } from 'graphql';
 import fetch from 'node-fetch';
 import NewsItemType from '../types/NewsItemType';
 
@@ -34,7 +32,7 @@ const news = {
       lastFetchTask = fetch(url)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          // console.log(data);
           if (data.status === 'ok') {
             items = data.articles;
           }
